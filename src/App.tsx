@@ -56,26 +56,26 @@ function App() {
     return retBooks;
   }, [searchQuery, books, sortOption]);
 
-  
-  // const firstBook: Book = b;
   return (
-    <>
-    <div className="parent">
-      <div className="div1">
-        <img src="cydome_logo.png" alt="Cydome" className="logo"/>
-        <h1>Library</h1>
-      </div>
-      <div className="div2">
-            {/* FilterOptions */}
-      </div>
-      <div className="div3">
-          {/* SearchBar */}
-          <SortOptions sortOption={sortOption} setSortOption={setSortOption} />
-          <BookList books={filteredBooks} />
-      </div>
-      <div className="div4"> </div>
-    </div>
-    </>
+  <div className="parent">
+    <header className="header">
+      <img src="cydome_logo.png" alt="Cydome" className="logo"/>
+      <h1>Library</h1>
+    </header>
+    
+    <aside className="sidebar-left">
+      {/* FilterOptions */}
+    </aside>
+    
+    <main className="main-content">
+      {/* SearchBar */}
+      <SortOptions sortOption={sortOption} setSortOption={setSortOption} />
+      <BookList books={filteredBooks} />
+    </main>
+    
+    <aside className="sidebar-right">
+    </aside>
+  </div>
   );
 }
 
