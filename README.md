@@ -9,7 +9,6 @@
 * SortOptions
 * BookList
 * FilterOptions
-* FavoriteList
 
 # SortOptions
 - on top of BookList
@@ -26,6 +25,10 @@
 - title
 - opened/closed tab
 - filterOption
+
+# FilterFavorites
+- toggle favorites only
+- get data from the localStorage
 
 # FilterTabSelection
 - toggle tabs selection
@@ -53,6 +56,7 @@
 - useState for storing books
 
 # BookCard
+- heart: add to favorites and store in the localStorage
 - image placeholder
 - title
 - author
