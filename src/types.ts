@@ -17,6 +17,12 @@ export interface Book {
     description: string;
 }
 
+export type SortOption =
+    | 'A_TO_Z'
+    | 'Z_TO_A'
+    | 'RATING_LOW_TO_HIGH'
+    | 'RATING_HIGH_TO_LOW';
+
 /*
 I would recommended to change 'rating' to be like this:
 

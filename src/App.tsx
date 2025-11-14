@@ -2,12 +2,16 @@ import React, { useEffect, useMemo, useState } from 'react';
 import './App.css';
 import BookList from './BookList';
 import { Book } from './types';
+import SortOptions from './SortOptions';
+import { SortOption } from './types';
+
 
 function App() {
-
+ 
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [sortOption, setSortOption] = useState<SortOption>('A_TO_Z');
 
   useEffect(() => {
     // Here I used a wrapper function to use async/await
@@ -29,14 +33,28 @@ function App() {
   }, []);
 
   const filteredBooks = useMemo(() => {
-    if (searchQuery === '') {
-      return books;
+    let retBooks: Book[] = [...books];
+    if (searchQuery !== '') {
+      retBooks = books.filter((book) =>
+                book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                book.author.toLowerCase().includes(searchQuery.toLowerCase()))
     }
-    return books.filter((book) =>
-      book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }, [searchQuery, books]);
+    switch (sortOption) {
+      case 'A_TO_Z':
+        retBooks.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case 'Z_TO_A':
+        retBooks.sort((a, b) => b.title.localeCompare(a.title));
+        break;
+      case 'RATING_LOW_TO_HIGH':
+        retBooks.sort((a, b) => a.rating - b.rating);
+        break;
+      case 'RATING_HIGH_TO_LOW':
+        retBooks.sort((a, b) => b.rating - a.rating);
+        break;
+    }
+    return retBooks;
+  }, [searchQuery, books, sortOption]);
 
   
   // const firstBook: Book = b;
@@ -52,7 +70,7 @@ function App() {
       </div>
       <div className="div3">
           {/* SearchBar */}
-          {/* SortOptions */}
+          <SortOptions sortOption={sortOption} setSortOption={setSortOption} />
           <BookList books={filteredBooks} />
       </div>
       <div className="div4"> </div>
