@@ -4,7 +4,7 @@ import BookList from './BookList';
 import { Book } from './types';
 import SortOptions from './SortOptions';
 import { SortOption } from './types';
-
+import SearchBar from './SearchBar';
 
 function App() {
  
@@ -32,6 +32,7 @@ function App() {
     fetchBooks();
   }, []);
 
+  // Memoize filteredBooks to avoid unnecessary computations
   const filteredBooks = useMemo(() => {
     let retBooks: Book[] = [...books];
     if (searchQuery !== '') {
@@ -68,8 +69,10 @@ function App() {
     </aside>
     
     <main className="main-content">
-      {/* SearchBar */}
-      <SortOptions sortOption={sortOption} setSortOption={setSortOption} />
+      <div className="status-bar">
+        <SearchBar setSearchQuery={setSearchQuery} />
+        <SortOptions sortOption={sortOption} setSortOption={setSortOption} />
+      </div>
       <BookList books={filteredBooks} />
     </main>
     

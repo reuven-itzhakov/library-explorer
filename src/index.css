@@ -53,3 +53,17 @@
   width: 200px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.status-bar {
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.search-bar{
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+}
