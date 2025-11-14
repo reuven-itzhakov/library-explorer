@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './App.css';
-// import BookCard from './BookCard';
+import BookList from './BookList';
 import { Book } from './types';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
     const fetchBooks = async () => { // Fetch the books data from the JSON file
       setLoading(true);
       try {
-        const response = await fetch('./public/books.json');
+        const response = await fetch('/books.json');
         if(!response.ok){
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -38,7 +38,7 @@ function App() {
     );
   }, [searchQuery, books]);
 
-  console.log(books);
+  
   // const firstBook: Book = b;
   return (
     <>
@@ -53,7 +53,7 @@ function App() {
       <div className="div3">
           {/* SearchBar */}
           {/* SortOptions */}
-          {/* BookList */}
+          <BookList books={filteredBooks} />
       </div>
       <div className="div4"> </div>
     </div>

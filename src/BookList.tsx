@@ -1,13 +1,13 @@
 import {Book} from './types';
 
-function BookList(books: Book[]) {
+import BookCard from './BookCard';
 
-    
+function BookList({ books }: { books: Book[] }) {
 
     return (
         <>
-          {books.map((book) => (
-            <BookCard book={book} key={book.id} />
+          {books.map((book, index) => (
+            <BookCard {...book} key={index} />
           ))}
         </>
     );
