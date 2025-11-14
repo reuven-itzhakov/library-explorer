@@ -1,17 +1,25 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './App.css';
 import BookList from './BookList';
-import { Book } from './types';
+import { Book, Tag } from './types';
 import SortOptions from './SortOptions';
 import { SortOption } from './types';
 import SearchBar from './SearchBar';
+import FilterOptions from './FilterOptions';
 
 function App() {
- 
+  
+  const availableTags: Tag[] = ['tech', 'non-fiction', 'fiction', 'fantasy', 'history', 'self-help', 'science'];
+  const filterTabs: string[] = ['Favorites', 'Tags', 'Rating'];
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortOption, setSortOption] = useState<SortOption>('A_TO_Z');
+  const [filters, setFilters] = useState({
+    showFavoritesOnly: false as boolean,
+    selectedTags: [] as Tag[],
+    minRating: 0 as number
+  });
 
   useEffect(() => {
     // Here I used a wrapper function to use async/await
@@ -40,6 +48,18 @@ function App() {
                 book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 book.author.toLowerCase().includes(searchQuery.toLowerCase()))
     }
+    if (filters.showFavoritesOnly) {
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      retBooks = retBooks.filter(book => favorites.includes(book.id));
+    }
+    if (filters.selectedTags.length > 0) {
+      retBooks = retBooks.filter(book =>
+        book.tags?.some(tag => filters.selectedTags.includes(tag))
+      );
+    }
+    if (filters.minRating > 0) {
+      retBooks = retBooks.filter(book => book.rating >= filters.minRating);
+    }
     switch (sortOption) {
       case 'A_TO_Z':
         retBooks.sort((a, b) => a.title.localeCompare(b.title));
@@ -55,7 +75,7 @@ function App() {
         break;
     }
     return retBooks;
-  }, [searchQuery, books, sortOption]);
+  }, [searchQuery, books, sortOption, filters]);
 
   return (
   <div className="parent">
@@ -65,7 +85,11 @@ function App() {
     </header>
     
     <aside className="sidebar-left">
-      {/* FilterOptions */}
+      <FilterOptions
+          filterTabs={filterTabs}
+          availableTags={availableTags}
+          onFiltersChange={setFilters}
+      />
     </aside>
     
     <main className="main-content">

@@ -18,7 +18,7 @@
 - show number of books in BookList
 
 # FilterOptions:
-* FilterTab (one for tags and one for stars)
+* FilterTab (one for tags, one for stars, and one for favorites)
 - clear button
 
 # FliterTab
