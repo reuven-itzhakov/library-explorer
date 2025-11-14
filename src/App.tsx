@@ -28,7 +28,7 @@ function App() {
     fetchBooks();
   }, []);
 
-  useMemo(() => {
+  const filteredBooks = useMemo(() => {
     if (searchQuery === '') {
       return books;
     }
