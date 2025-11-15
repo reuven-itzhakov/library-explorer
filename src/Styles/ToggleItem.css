@@ -16,3 +16,7 @@
   font-size: 14px;
   color: #333;
 }
+
+.toggle-item:hover .toggle-label {
+  color: #000;
+}
