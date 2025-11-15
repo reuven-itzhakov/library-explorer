@@ -97,7 +97,7 @@ function App() {
           <SearchBar setSearchQuery={setSearchQuery} />
           <SortOptions sortOption={sortOption} setSortOption={setSortOption} />
         </div>
-        <BookList books={filteredBooks} />
+        {loading ? <p>Loading...</p> : <BookList books={filteredBooks} />}
       </main>
     </div>
   );
