@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
 import ToggleItem from '../ToggleItem';
 import {FilterTabSelectionProps, Tag} from '../types';
+import '../Styles/FilterTabSelection.css';
 
 function FilterTabSelection({ availableTags, selectedTags, onFilterChange }: FilterTabSelectionProps) {
   const handleToggle = (tag: Tag, checked: boolean) => {

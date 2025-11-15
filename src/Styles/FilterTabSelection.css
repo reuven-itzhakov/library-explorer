@@ -1,0 +1,4 @@
+.filter-tag-selection {
+  display: flex;
+  flex-direction: column;
+}
