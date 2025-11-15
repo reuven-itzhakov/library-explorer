@@ -4,7 +4,7 @@ import '../Styles/FilterTab.css';
 
 function FilterTab({ title, children ,opened }: FilterTabProps) {
 
-    const [isOpen, setIsOpen] = useState(opened);
+    const [isOpen, setIsOpen] = useState<boolean>(opened);
 
     return (
         <div className="filter-tab">

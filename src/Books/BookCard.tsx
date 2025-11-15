@@ -14,7 +14,7 @@ function BookCard(book: Book) {
     const toggleFavorite = () => {
         const favorites: string[] = JSON.parse(localStorage.getItem('favorites') || '[]');
         if (favorites.includes(book.id)) {
-            const updatedFavorites = favorites.filter(id => id !== book.id);
+            const updatedFavorites: string[] = favorites.filter((id: string) => id !== book.id);
             localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
             setIsFavorite(false);
         } else {

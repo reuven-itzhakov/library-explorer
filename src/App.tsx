@@ -49,7 +49,7 @@ function App() {
                 book.author.toLowerCase().includes(searchQuery.toLowerCase()))
     }
     if (filters.showFavoritesOnly) {
-      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const favorites: string[] = JSON.parse(localStorage.getItem('favorites') || '[]');
       retBooks = retBooks.filter(book => favorites.includes(book.id));
     }
     if (filters.selectedTags.length > 0) {

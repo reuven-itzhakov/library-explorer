@@ -7,9 +7,9 @@ import { FilterOptionsProps, Tag } from '../types';
 import '../Styles/FilterOptions.css';
 
 function FilterOptions({ filterTabs, availableTags, onFiltersChange }: FilterOptionsProps) {
-  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState<boolean>(false);
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
-  const [minRating, setMinRating] = useState(0);
+  const [minRating, setMinRating] = useState<number>(0);
 
   // Notify parent whenever any filter changes
   useMemo(() => {
