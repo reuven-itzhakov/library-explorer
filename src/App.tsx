@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import './App.css';
-import BookList from './BookList';
+import './Styles/App.css';
+import BookList from './Books/BookList';
 import { Book, Tag } from './types';
 import SortOptions from './SortOptions';
 import { SortOption } from './types';
 import SearchBar from './SearchBar';
-import FilterOptions from './FilterOptions';
+import FilterOptions from './Filters/FilterOptions';
 
 function App() {
   
@@ -78,31 +78,28 @@ function App() {
   }, [searchQuery, books, sortOption, filters]);
 
   return (
-  <div className="parent">
-    <header className="header">
-      <img src="cydome_logo.png" alt="Cydome" className="logo"/>
-      <h1>Library</h1>
-    </header>
-    
-    <aside className="sidebar-left">
-      <FilterOptions
+    <div className="app-container">
+      <header className="app-header">
+        <img src="cydome_logo.png" alt="Cydome" className="logo"/>
+        <h1>Library</h1>
+      </header>
+      
+      <aside className="app-sidebar">
+        <FilterOptions
           filterTabs={filterTabs}
           availableTags={availableTags}
           onFiltersChange={setFilters}
-      />
-    </aside>
-    
-    <main className="main-content">
-      <div className="status-bar">
-        <SearchBar setSearchQuery={setSearchQuery} />
-        <SortOptions sortOption={sortOption} setSortOption={setSortOption} />
-      </div>
-      <BookList books={filteredBooks} />
-    </main>
-    
-    <aside className="sidebar-right">
-    </aside>
-  </div>
+        />
+      </aside>
+      
+      <main className="app-main">
+        <div className="status-bar">
+          <SearchBar setSearchQuery={setSearchQuery} />
+          <SortOptions sortOption={sortOption} setSortOption={setSortOption} />
+        </div>
+        <BookList books={filteredBooks} />
+      </main>
+    </div>
   );
 }
 
