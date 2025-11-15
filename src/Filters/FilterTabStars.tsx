@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import { FilterTabStarsProps } from '../types';
+import '../Styles/FilterTabStars.css';
 
 function FilterTabStars({ minRating, onFilterChange }: FilterTabStarsProps) {
 
