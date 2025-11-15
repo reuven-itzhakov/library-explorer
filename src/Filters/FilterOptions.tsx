@@ -4,6 +4,7 @@ import FilterFavorites from './FilterFavorites';
 import FilterTabSelection from './FilterTabSelection';
 import FilterTabStars from './FilterTabStars';
 import { FilterOptionsProps, Tag } from '../types';
+import '../Styles/FilterOptions.css';
 
 function FilterOptions({ filterTabs, availableTags, onFiltersChange }: FilterOptionsProps) {
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
