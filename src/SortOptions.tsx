@@ -1,13 +1,14 @@
-import { useState } from 'react';
 import { SortOption } from './types';
+import './Styles/SortOptions.css';
 
 function SortOptions({sortOption, setSortOption}: {sortOption: SortOption, setSortOption: (option: SortOption) => void}) {
 
     return (
-        <div>
+        <div className="sort-container">
             <label htmlFor="sort-select">Sort by: </label>
             <select
                 id="sort-select"
+                className="sort-select"
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value as SortOption)}
             >

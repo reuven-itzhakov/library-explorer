@@ -34,3 +34,11 @@
 .app-main {
   padding: 20px;
 }
+
+.status-bar {
+  padding: 0 30px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
