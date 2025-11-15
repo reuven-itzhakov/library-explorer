@@ -1,4 +1,5 @@
 import { ToggleItemProps } from './types';
+import './Styles/ToggleItem.css';
 
 function ToggleItem({ label, checked, onChange }: ToggleItemProps) {
   return (
