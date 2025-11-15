@@ -1,0 +1,35 @@
+.filter-tab {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.filter-tab-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: #f9f9f9;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-tab-header:hover {
+  background: #f0f0f0;
+}
+
+.filter-tab-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.filter-tab-icon {
+  font-size: 14px;
+  color: #666;
+}
+
+.filter-tab-content {
+  padding: 12px;
+}

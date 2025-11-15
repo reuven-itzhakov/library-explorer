@@ -1,5 +1,6 @@
 import { FilterTabProps } from '../types';
 import { useState } from 'react';
+import '../Styles/FilterTab.css';
 
 function FilterTab({ title, children ,opened }: FilterTabProps) {
 
