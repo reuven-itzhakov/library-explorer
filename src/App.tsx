@@ -80,7 +80,6 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <img src="cydome_logo.png" alt="Cydome" className="logo"/>
         <h1>Library</h1>
       </header>
       
